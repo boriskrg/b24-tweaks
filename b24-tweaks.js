@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         B24 tweaks
 // @namespace    http://tampermonkey.net/
-// @version      1.8
+// @version      2.0
 // @description  коды полей в карточках CRM и гридах и много чего еще
-// @updateURL    https://gist.githubusercontent.com/boriskrg/1a5216e1408c92bcc9f7848e484870c3/raw
-// @downloadURL  https://gist.githubusercontent.com/boriskrg/1a5216e1408c92bcc9f7848e484870c3/raw
+// @updateURL    https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
+// @downloadURL  https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
 // @author       boriskrg
 // @include      *
 // @icon         none
@@ -102,7 +102,7 @@ class KbConfigService {
                     default: true,
                 },
                 handleBpCodeMonospace: {
-                    label: 'моноширный шрифт в PHP коде в БД',
+                    label: 'моноширный шрифт в PHP коде в БП',
                     type: 'checkbox',
                     default: true,
                 },
