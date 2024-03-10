@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B24 tweaks
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.2
 // @description  коды полей в карточках CRM и гридах и много чего еще
 // @updateURL    https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
 // @downloadURL  https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
@@ -72,6 +72,12 @@ class KbConfigService {
             }
             #B24-Tweaks .config_var {
                 margin: 0 0 20px !important;
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+            }
+            div.config_var > label {
+                padding-left: 15px;
             }
         `)
         let frame = document.createElement('div')
