@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B24 tweaks
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  коды полей в карточках CRM и гридах и много чего еще
 // @updateURL    https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
 // @downloadURL  https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
@@ -258,12 +258,29 @@ class KbTweaks {
     }
 
     handleDetailsSelectField () {
+        // for old interface compat
         BX.addCustomEvent('BX.Crm.EntityEditorSection:onOpenChildMenu', (_, menu) => {
             menu.menuItems = menu.menuItems.map(i => {
                 i.text = `${i.text} [${i.value}]`
                 return i
             })
         })
+        BX.addCustomEvent(
+            'SidePanel.Slider:onLoad',
+            () => window.location.href.includes('IFRAME=Y') && document
+                .querySelectorAll('.ui-entity-editor-content-add-lnk')
+                .forEach(button => button.addEventListener(
+                    'click',
+                    () => document
+                        .querySelectorAll('.ui-entity-editor-popup-field-selector-list-label')
+                        .forEach(l => l.innerHTML += KbTweaksUtil.getCodeHtml(
+                            l.getAttribute('for').split('\\')[1],
+                            '#bbb',
+                            '10px',
+                            false,
+                        )),
+                )),
+        )
     }
 }
 
