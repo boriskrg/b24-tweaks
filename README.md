@@ -50,8 +50,3 @@
 - добавлена кнопка reload для сайд панелей в левом верхнем углу
 
 ![sidepanel-reload](https://github.com/boriskrg/b24-tweaks/assets/45704726/61e599d4-ff5e-45d0-ae8c-cc556c718e4e)
-
-
-
-  ![sidepanel-reload](https://github.com/boriskrg/b24-tweaks/assets/45704726/453d6e1b-d6d2-4532-a8d7-6751fe92a179)
-
