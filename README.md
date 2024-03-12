@@ -18,7 +18,7 @@
 
   ![image](https://github.com/boriskrg/b24-tweaks/assets/45704726/4a0952c8-6e7c-4062-9270-6a58c6bb0fcc)
 
-- скопировать последнюю версию скрипта в редактор кода https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
+- скопировать [последнюю версию скрипта](https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js) в редактор кода 
 - сохранить (Ctrl+S)
 
 #### Использование:
