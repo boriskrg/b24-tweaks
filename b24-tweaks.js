@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B24 tweaks
 // @namespace    http://tampermonkey.net/
-// @version      2.2
+// @version      2.3
 // @description  коды полей в карточках CRM и гридах и много чего еще
 // @updateURL    https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
 // @downloadURL  https://raw.githubusercontent.com/boriskrg/b24-tweaks/master/b24-tweaks.js
@@ -210,8 +210,20 @@ class KbTweaks {
                 if (!label) {
                     return
                 }
-                const originalText = label.innerHTML.split('<br>')[0]
-                label.innerHTML = originalText + KbTweaksUtil.getCodeHtml(item.dataset.name, '#aaa', '10px', false)
+                if (label.parentNode.querySelector('.bk-code')) {
+                    return;
+                }
+                const code = document.createElement('span')
+                code.classList.add('bk-code')
+                code.style.position = 'absolute'
+                code.style.top = '0';
+                code.style.right = '6px';
+                code.style.color = '#aaa'
+                code.style.fontSize = '10px'
+                code.style.userSelect = 'all'
+                code.style.lineHeight = '10px'
+                code.innerText = item.dataset.name
+                label.parentNode.append(code)
             })
         })
     }
