@@ -79,6 +79,9 @@ class KbConfigService {
             div.config_var > label {
                 padding-left: 15px;
             }
+            textarea[name=comment_text] {
+                font-family: monospace;
+            }
         `)
         let frame = document.createElement('div')
         frame.style.display = 'none'
@@ -154,13 +157,13 @@ class KbTweaks {
     constructor (gmc) {
         this.gmc = gmc
 
-        this.gmc.get('handleCrmDetailsCodes').then(v => v && this.handleCrmDetailsCodes())
-        this.gmc.get('handleGridHeaderCodes').then(v => v && this.handleGridHeaderCodes())
-        this.gmc.get('handleGridSettingsCodes').then(v => v && this.handleGridSettingsCodes())
-        this.gmc.get('handleBpCodeMonospace').then(v => v && this.handleBpCodeMonospace())
-        this.gmc.get('handleBpExpandSelect').then(v => v && this.handleBpExpandSelect())
-        this.gmc.get('handleSidePanelReload').then(v => v && this.handleSidePanelReload())
-        this.gmc.get('handleDetailsSelectField').then(v => v && this.handleDetailsSelectField())
+        this.handleCrmDetailsCodes()
+        this.handleGridHeaderCodes()
+        this.handleGridSettingsCodes()
+        this.handleBpCodeMonospace()
+        this.handleBpExpandSelect()
+        this.handleSidePanelReload()
+        this.handleDetailsSelectField()
     }
 
     static async init () {
@@ -205,6 +208,7 @@ class KbTweaks {
 
     handleGridSettingsCodes () {
         BX.addCustomEvent('BX.Grid.SettingsWindow:show', () => {
+
             document.querySelectorAll('.main-grid-settings-window-list-item').forEach(item => {
                 const label = item.querySelector('label')
                 if (!label) {
@@ -320,15 +324,14 @@ class KbTweaksUtil {
     }
 
     static getCodeHtml (code, color = '#bbb', fontSize = '12px', braces = true) {
-        if (braces) {
-            code = `[${code}]`
-        }
-        return `
-            <span class='bk-code'
+        let res = `<span class='bk-code'
                href='/bitrix/admin/userfield_admin.php?find_field_name=${code}'
-               style='color: ${color}; font-size: ${fontSize}; user-select: all'
-            >${code}</span>
-        `
+               style='color: ${color}; font-size: ${fontSize}; user-select: all; margin: 0'
+            >${code}</span>`
+        if (braces) {
+            res = `<span style='margin: 0 5px'>[${res}]</span>`
+        }
+        return res
     }
 
     static addCodeToLabel (f) {
